@@ -1,3 +1,7 @@
+package model;
+
+import java.util.Date;
+
 public class Plan {
 
 	private String nombre;
@@ -11,9 +15,6 @@ public class Plan {
 		throw new UnsupportedOperationException();
 	}
 
-	public Iterator<Service> getIterator() {
-		// TODO - implement Plan.getIterator
-		throw new UnsupportedOperationException();
-	}
+
 
 }

@@ -1,3 +1,7 @@
+package model;
+
+import java.util.Date;
+
 public abstract class Servicio {
 
 	private String id;
