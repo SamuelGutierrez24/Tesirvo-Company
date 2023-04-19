@@ -1,6 +1,8 @@
 package model;
 
 public abstract class ServicioBasico extends Servicio {
+
+
     private Medidor medidor = new Medidor();
 
     public Medidor getMedidor() {
