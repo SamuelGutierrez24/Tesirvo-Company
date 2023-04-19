@@ -5,4 +5,9 @@ public class Gas extends ServicioBasico {
     public String toString() {
         return "Servicio de Gas\n\n" + super.toString();
     }
+
+    public Gas(Medidor medidor){
+        super(medidor);
+    }
+
 }

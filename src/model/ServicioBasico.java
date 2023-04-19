@@ -11,4 +11,8 @@ public abstract class ServicioBasico extends Servicio {
     public String toString() {
         return super.toString() + "\n" + medidor;
     }
+
+    public ServicioBasico(Medidor medidor){
+        this.medidor = medidor;
+    }
 }

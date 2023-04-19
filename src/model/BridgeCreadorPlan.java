@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class BridgeCreadorPlan {
 
 	/**
@@ -7,8 +9,8 @@ public class BridgeCreadorPlan {
 	 * @param plan
 	 */
 	public Servicio[] crearServiciosBasadoEnPlan(Plan plan) {
-		// TODO - implement BridgeCreadorPlan.crearServiciosBasadoEnPlan
-		throw new UnsupportedOperationException();
+		//TODO: I wish for my eternal slumber
+		return null;
 	}
 
 }
