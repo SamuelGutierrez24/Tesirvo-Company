@@ -1,3 +1,5 @@
+package model;
+
 public enum Estado {
 	POTENCIAL,
 	PAZ_Y_SALVO,

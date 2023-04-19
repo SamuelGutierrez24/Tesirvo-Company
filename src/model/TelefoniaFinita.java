@@ -1,3 +1,5 @@
+package model;
+
 public class TelefoniaFinita extends Telefonia {
 
 	private int minutosLocales;

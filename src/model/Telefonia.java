@@ -1,3 +1,5 @@
+package model;
+
 public class Telefonia extends Servicio {
 
 	private int consumLocal;

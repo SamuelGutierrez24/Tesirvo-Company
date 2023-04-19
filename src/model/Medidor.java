@@ -1,3 +1,5 @@
+package model;
+
 public class Medidor {
 
 	private String identificacion;

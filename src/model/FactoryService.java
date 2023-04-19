@@ -1,3 +1,5 @@
+package model;
+
 public class FactoryService {
 
 	public Servicio crearServicio() {
