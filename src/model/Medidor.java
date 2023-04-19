@@ -3,6 +3,7 @@ package model;
 public class Medidor {
 
 	private String identificacion;
+
 	private Double mesActual;
 	private double mesAnterior;
 
@@ -19,8 +20,7 @@ public class Medidor {
 	}
 
 	public double getMesActual() {
-		// TODO - implement Medidor.getMesActual
-		throw new UnsupportedOperationException();
+		return mesActual;
 	}
 
 	/**
@@ -28,8 +28,7 @@ public class Medidor {
 	 * @param mesActual
 	 */
 	public void setMesActual(double mesActual) {
-		// TODO - implement Medidor.setMesActual
-		throw new UnsupportedOperationException();
+		this.mesActual = mesActual;
 	}
 
 	public double getMesAnterior() {
@@ -44,4 +43,11 @@ public class Medidor {
 		this.mesAnterior = mesAnterior;
 	}
 
+	@Override
+	public String toString() {
+		return "Medidor:" +
+				"\n  identificacion='" + identificacion +
+				"\n  mesActual=" + mesActual +
+				"\n  mesAnterior=" + mesAnterior ;
+	}
 }

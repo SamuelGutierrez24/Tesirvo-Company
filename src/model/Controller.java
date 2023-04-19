@@ -1,7 +1,6 @@
 package model;
 
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
 
 public class Controller {
 
@@ -9,8 +8,6 @@ public class Controller {
 	ContenedorClientes Clientes;
 
 	private Controller() {
-		// TODO - implement Controller.Controller
-		throw new UnsupportedOperationException();
 	}
 
 	/**
