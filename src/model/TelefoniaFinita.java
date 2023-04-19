@@ -1,9 +1,11 @@
 package model;
 
+import java.util.*;
+
 public class TelefoniaFinita extends Telefonia {
 
-	public TelefoniaFinita(int minutosLocales, int minutoslargaDist, String contrato){
-		super(contrato);
+	public TelefoniaFinita(int minutosLocales, int minutoslargaDist, String contrato, String id, String dir, Date fechaInstall, Date fechaFact){
+		super(contrato,id,dir,fechaInstall,fechaFact);
 		this.minutoslargaDist = minutoslargaDist;
 		this.minutosLocales = minutosLocales;
 	}

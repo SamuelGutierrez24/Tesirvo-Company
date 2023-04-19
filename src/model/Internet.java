@@ -1,6 +1,6 @@
 package model;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Internet extends Servicio {
 
@@ -8,7 +8,10 @@ public class Internet extends Servicio {
 	private int megasConsumidas;
 	private TipoDeContrato contrato;
 
-	public Internet(int megas, String contrato)throws NoSuchElementException{
+	public Internet(int megas, String contrato, String id, String dir, Date fechaInstall, Date fechaFact)throws NoSuchElementException{
+
+		super(id,dir,fechaInstall,fechaFact);
+
 		switch (contrato){
 			case "PREPAGO":
 				this.contrato = TipoDeContrato.PREPAGO;

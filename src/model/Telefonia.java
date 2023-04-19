@@ -1,6 +1,6 @@
 package model;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Telefonia extends Servicio {
 
@@ -9,7 +9,10 @@ public class Telefonia extends Servicio {
 
 	private TipoDeContrato contrato;
 
-	public Telefonia(String contrato) throws NoSuchElementException {
+	public Telefonia(String contrato, String id, String dir, Date fechaInstall, Date fechaFact) throws NoSuchElementException {
+
+		super(id,dir,fechaInstall,fechaFact);
+
 		switch (contrato){
 			case "PREPAGO":
 				this.contrato = TipoDeContrato.PREPAGO;

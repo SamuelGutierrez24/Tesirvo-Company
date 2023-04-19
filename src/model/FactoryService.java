@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class FactoryService {
 
-	public Servicio crearServicioTelefonico(boolean finita, String contract, int localMin, int largeMin) {
+	public Servicio crearServicioTelefonico(String contract, int localMin, int largeMin, String id, String dir, Date fechaInstall, Date fechaFact) {
 
-		if(finita == true){
-			return new TelefoniaFinita(localMin,largeMin,contract);
+		if(!contract.equals(TipoDeContrato.ILIMITADO + "")){
+			return new TelefoniaFinita(localMin,largeMin,contract,id,dir,fechaInstall,fechaFact);
 		}else{
-			return new Telefonia(contract);
+			return new Telefonia(contract,id,dir,fechaInstall,fechaFact);
 		}
 	}
 
-	public Servicio crearServicioInternet(int capacityMe,String contract ){
-		return new Internet(capacityMe,contract);
+	public Servicio crearServicioInternet(int capacityMe, String contract, String id, String dir, Date fechaInstall, Date fechaFact){
+		return new Internet(capacityMe,contract,id,dir,fechaInstall,fechaFact);
 	}
 
 	public Servicio CrearServicioBasico(int type, String idMedidor, String id, String dir, Date fechaInstall, Date fechaFact) throws Exception {
