@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-public class Cliente {
+public class Cliente implements Iterable<PaqueteDeServicios>{
 
 	private String nombre;
 	private String id;
@@ -11,6 +11,18 @@ public class Cliente {
 	private String direccionDeFacturacion;
 	private String telefono;
 	private String email;
+	private ArrayList<PaqueteDeServicios> paquetes;
+
+	public Cliente(String nombre, String id, Date fechaDeRegistro, String codigoDeContrato, String direccionDeFacturacion, String telefono, String email){
+		this.id = id;
+		this.nombre = nombre;
+		this.fechaDeRegistro = fechaDeRegistro;
+		this.codigoDeContrato = codigoDeContrato;
+		this.direccionDeFacturacion = direccionDeFacturacion;
+		this.telefono = telefono;
+		this.email = email;
+		paquetes = new ArrayList<>();
+	}
 
 	public String getNombre() {
 		return this.nombre;
@@ -84,9 +96,9 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Iterator<Package> getIterator() {
-		// TODO - implement Cliente.getIterator
-		throw new UnsupportedOperationException();
+	@Override
+	public Iterator<PaqueteDeServicios> iterator() {
+		return paquetes.iterator();
 	}
 
 	public String getCodigoDeContrato() {
@@ -101,4 +113,16 @@ public class Cliente {
 		this.codigoDeContrato = codigoDeContrato;
 	}
 
+	public String paquetesToString(){
+		String result = "";
+		for (PaqueteDeServicios p : paquetes){
+			result += "\n" + p;
+		}
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente " + id +"\nNombre: " + nombre + "\nFecha de registro: " + fechaDeRegistro + "\nCodigo de contrato: " + codigoDeContrato + "\nTelefono: " + telefono + "\nEmail: " + email + "\n\nPaquetes: " + paquetesToString();
+	}
 }
