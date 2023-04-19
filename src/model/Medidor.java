@@ -6,9 +6,12 @@ public class Medidor {
 
 	private Double mesActual;
 	private double mesAnterior;
-
 	public String getIdentificacion() {
 		return this.identificacion;
+	}
+
+	public Medidor(String id){
+		identificacion = id;
 	}
 
 	/**

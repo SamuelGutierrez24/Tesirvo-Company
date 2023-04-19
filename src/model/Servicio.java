@@ -10,6 +10,14 @@ public abstract class Servicio {
 	private Date fechaFacturacion;
 	private EstadoServicio estado;
 
+	public Servicio(String id, String dir, Date fechaInstal, Date fechaFacturacion){
+		this.id = id;
+		direccionInstalacion = dir;
+		fechaFacturacion = fechaInstal;
+		this.fechaFacturacion = fechaFacturacion;
+		estado = EstadoServicio.ACTIVO;
+	}
+
 	public String getId() {
 		return this.id;
 	}

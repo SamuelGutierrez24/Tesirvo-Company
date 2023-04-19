@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public class Gas extends ServicioBasico {
 
     @Override
@@ -7,8 +9,8 @@ public class Gas extends ServicioBasico {
         return "Servicio de Gas\n\n" + super.toString();
     }
 
-    public Gas(Medidor medidor){
-        super(medidor);
+    public Gas(Medidor medidor, String id, String dir, Date fechaInstall, Date fechaFact){
+        super(medidor,id,dir,fechaInstall,fechaFact);
     }
 
 }
