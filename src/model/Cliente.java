@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.util.*;
 
 public class Cliente {
 
@@ -84,7 +84,7 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Iterator<Contract> getIterator() {
+	public Iterator<Package> getIterator() {
 		// TODO - implement Cliente.getIterator
 		throw new UnsupportedOperationException();
 	}

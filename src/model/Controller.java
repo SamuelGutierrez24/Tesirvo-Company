@@ -1,14 +1,12 @@
 package model;
 
-import java.util.Date;
+import java.util.*;
 
 public class Controller {
 
 	ContenedorClientes Clientes;
 
 	private Controller() {
-		// TODO - implement Controller.Controller
-		throw new UnsupportedOperationException();
 	}
 
 	/**
