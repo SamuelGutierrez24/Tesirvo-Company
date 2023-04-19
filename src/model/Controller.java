@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Controller {
 
+	private static Controller instance = new Controller();
 	ContenedorClientes Clientes;
 
 	private Controller() {
@@ -81,9 +82,8 @@ public class Controller {
 		throw new UnsupportedOperationException();
 	}
 
-	public Controller getInstance() {
-		// TODO - implement Controller.getInstance
-		throw new UnsupportedOperationException();
+	public static Controller getInstance() {
+		return instance;
 	}
 
 	public Iterator<Cliente> getIterator() {
