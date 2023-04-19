@@ -84,10 +84,6 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public Iterator<Contract> getIterator() {
-		// TODO - implement Cliente.getIterator
-		throw new UnsupportedOperationException();
-	}
 
 	public String getCodigoDeContrato() {
 		return this.codigoDeContrato;
