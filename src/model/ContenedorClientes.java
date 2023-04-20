@@ -36,4 +36,17 @@ public class ContenedorClientes {
             }
         }
     }
+
+    public void inactivarServicio(String idCliente, String idPaquete, String idServicio){
+        buscarCliente(idCliente).inactivarServicio(idPaquete, idServicio);
+    }
+
+    public Cliente buscarCliente(String idCliente){
+        for (Cliente cliente: clientes) {
+            if (cliente.getId().equals(idCliente)){
+                return cliente;
+            }
+            return null;
+        }
+    }
 }
