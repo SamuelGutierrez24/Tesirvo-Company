@@ -33,19 +33,14 @@ public class Controller {
 		}
 	}
 
-
+	public void inactivarServicio(String idCliente, String idPaquete, String idServicio) {
+		contenedorClientes.inactivarServicio(idCliente, idPaquete, idServicio)
+	}
 
 	public void crearPaquete(String idCliente, String idPaquete){
 		contenedorClientes.crearPaquete(idCliente, idPaquete);
 	}
 
-	/**
-	 * @param idCliente
-	 * @param idServicio
-	 * @param dirServicio
-	 * @param estServicio
-	 * @param idMedidior
-	 */
 	public void crearServicio(String idCliente, String idPaquete, String idServicio, String tipoServicio, String direccionInstalacion, String fechaInstalacion, String fechaFacturacion, ArrayList<String> parametrosParticulares) {
 		contenedorClientes.crearServicioCliente( idCliente, idPaquete, idServicio, tipoServicio,  direccionInstalacion,  fechaInstalacion,  fechaFacturacion, parametrosParticulares);
 	}

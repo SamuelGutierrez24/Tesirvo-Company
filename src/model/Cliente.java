@@ -44,6 +44,11 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 					if (tipoServicio.equals("ServicioTelefonico")) s = factoryService.crearServicioTelefonico(parametrosParticulares.get(0), Integer.parseInt(parametrosParticulares.get(1)), Integer.parseInt(parametrosParticulares.get(2)), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
 					else if(tipoServicio.equals("ServicioInternet")) s = factoryService.crearServicioInternet(Integer.parseInt(parametrosParticulares.get(0)), parametrosParticulares.get(1), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
 					else if (tipoServicio.equals("ServicioBasico")) s = factoryService.CrearServicioBasico(Integer.parseInt(parametrosParticulares.get(0)), parametrosParticulares.get(1), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
+					else s = null;
+
+					if(s!= null) {
+						paquete.anadirServicios(s);
+					}
 				}
 			}
 		} catch (ParseException e) {
@@ -53,6 +58,14 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 		}
 
 
+	}
+
+	public void inactivarServicio(String idPaquete, String idServicio){
+		for (PaqueteDeServicios paquete: paquetes){
+			if (paquete.getIdPaquete().equals(idPaquete)){
+				paquete.inactivarServicio(idServicio);
+			}
+		}
 	}
 
 	public String getNombre() {
