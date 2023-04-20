@@ -40,17 +40,16 @@ public class ContenedorClientes implements Iterable<Cliente> {
         }
     }
 
-    public Cliente search(String id){
-        for (int i = 0; i<clientes.size();i++){
-            if(clientes.get(i).getId().equals(id)){
-                return clientes.get(i);
-            }
-        }
-        return null;
+    public void inactivarServicio(String idCliente, String idPaquete, String idServicio){
+        buscarCliente(idCliente).inactivarServicio(idPaquete, idServicio);
     }
 
-    @Override
-    public Iterator<Cliente> iterator() {
-        return clientes.iterator();
+    public Cliente buscarCliente(String idCliente){
+        for (Cliente cliente: clientes) {
+            if (cliente.getId().equals(idCliente)){
+                return cliente;
+            }
+            return null;
+        }
     }
 }
