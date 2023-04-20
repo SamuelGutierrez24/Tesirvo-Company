@@ -13,7 +13,9 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 	private String email;
 	private ArrayList<PaqueteDeServicios> paquetes;
 
-	public Cliente(String nombre, String id, Date fechaDeRegistro, String codigoDeContrato, String direccionDeFacturacion, String telefono, String email){
+	private Estado estado;
+
+	public Cliente(String nombre, String id, Date fechaDeRegistro, String codigoDeContrato, String direccionDeFacturacion, String telefono, String email, Estado estado){
 		this.id = id;
 		this.nombre = nombre;
 		this.fechaDeRegistro = fechaDeRegistro;
@@ -21,6 +23,7 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 		this.direccionDeFacturacion = direccionDeFacturacion;
 		this.telefono = telefono;
 		this.email = email;
+		this.estado = estado;
 		paquetes = new ArrayList<>();
 	}
 

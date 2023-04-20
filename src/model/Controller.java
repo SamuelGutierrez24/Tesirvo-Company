@@ -1,13 +1,21 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Controller {
 
 	private static Controller instance = new Controller();
-	ContenedorClientes Clientes;
+
+	private ContenedorClientes clientes;
+
+	private ContenedorPlanes planes;
+
+
 
 	private Controller() {
+		clientes = new ContenedorClientes();
+		planes = new ContenedorPlanes();
 	}
 
 	/**
@@ -21,9 +29,19 @@ public class Controller {
 	 * @param email
 	 * @param estado
 	 */
-	public void crearCliente(String nombre, String id, Date fecha, String codigoDeContrato, String direccion, String telefono, String email, String estado) {
-		// TODO - implement Controller.crearCliente
-		throw new UnsupportedOperationException();
+	public void crearCliente(String nombre, String id, String fecha, String codigoDeContrato, String direccion, String telefono, String email, String estado) {
+
+
+
+		// formato dd/MM/yyyy
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			Date date = dateFormat.parse(fecha);
+			clientes.anadirCliente(nombre, id, date, codigoDeContrato, direccion, telefono, email, estado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
