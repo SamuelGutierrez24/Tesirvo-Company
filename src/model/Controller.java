@@ -88,8 +88,8 @@ public class Controller {
 	 * @param nuevoValor
 	 */
 	public boolean actualizarValoresContador(String idCliente, String idServicio, double nuevoValor) {
-		// TODO - implement Controller.actualizarValoresContador
-		throw new UnsupportedOperationException();
+		Cliente client = contenedorClientes.search(idCliente);
+		
 	}
 
 	public static Controller getInstance() {

@@ -165,6 +165,10 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 		this.paquetes = paquetes;
 	}
 
+	public Servicio searchService(String id){
+		for ()
+	}
+
 	public Estado getEstado() {
 		return estado;
 	}

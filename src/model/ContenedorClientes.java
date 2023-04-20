@@ -2,8 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class ContenedorClientes {
+public class ContenedorClientes implements Iterable<Cliente> {
 
     public ContenedorClientes() {
         this.clientes = new ArrayList<>();
@@ -35,5 +38,19 @@ public class ContenedorClientes {
                cliente.crearServicio(idPaquete, idServicio, tipoServicio,  direccionInstalacion, fechaInstalacion, fechaFacturacion, parametrosParticulares);
             }
         }
+    }
+
+    public Cliente search(String id){
+        for (int i = 0; i<clientes.size();i++){
+            if(clientes.get(i).getId().equals(id)){
+                return clientes.get(i);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Iterator<Cliente> iterator() {
+        return clientes.iterator();
     }
 }
