@@ -49,7 +49,12 @@ public class ContenedorClientes implements Iterable<Cliente> {
             if (cliente.getId().equals(idCliente)){
                 return cliente;
             }
-            return null;
         }
+        return null;
+    }
+
+    @Override
+    public Iterator<Cliente> iterator() {
+        return null;
     }
 }

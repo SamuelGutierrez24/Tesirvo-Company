@@ -179,7 +179,14 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 	}
 
 	public Servicio searchService(String id){
-		for ()
+		Servicio servicio = null;
+		for (PaqueteDeServicios paquete:paquetes){
+			servicio = paquete.buscarServicioEnPaquete(id);
+			if(servicio != null){
+				return servicio;
+			}
+		}
+		return null;
 	}
 
 	public Estado getEstado() {
