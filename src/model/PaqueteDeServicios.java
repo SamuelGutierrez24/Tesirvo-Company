@@ -24,6 +24,15 @@ public class PaqueteDeServicios {
 		}
 	}
 
+	public Servicio buscarServicioEnPaquete(String id){
+		for (Servicio servicio: servicios){
+			if (servicio.getId().equals(id)){
+				return servicio;
+			}
+		}
+		return null;
+	}
+
 	private String idPaquete;
 
 	public String getIdPaquete() {
