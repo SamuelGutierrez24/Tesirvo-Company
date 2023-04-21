@@ -3,8 +3,9 @@ package model;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
-public class PaqueteDeServicios {
+public class PaqueteDeServicios implements Iterable<Servicio>{
 
 	private ArrayList<Servicio> servicios;
 	private Plan plan;
@@ -92,4 +93,8 @@ public class PaqueteDeServicios {
 		return idPaquete;
 	}
 
+	@Override
+	public Iterator<Servicio> iterator() {
+		return servicios.iterator();
+	}
 }
