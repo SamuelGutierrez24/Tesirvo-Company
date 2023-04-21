@@ -53,8 +53,16 @@ public class ContenedorClientes implements Iterable<Cliente> {
         return null;
     }
 
+    public ArrayList<Servicio> consultarServiciosCliente(String idCliente){
+        return buscarCliente(idCliente).consultarServicios();
+    }
+
     @Override
     public Iterator<Cliente> iterator() {
         return null;
+    }
+
+    public void addService(Servicio servicio){
+
     }
 }

@@ -68,6 +68,14 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 		}
 	}
 
+	public ArrayList<Servicio> consultarServicios(){
+		ArrayList<Servicio> servicios = new ArrayList<>();
+		for (PaqueteDeServicios paquete: paquetes) {
+			servicios.addAll(paquete.getServicios());
+		}
+		return servicios;
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -203,5 +211,15 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 
 	public void setFactoryService(FactoryService factoryService) {
 		this.factoryService = factoryService;
+	}
+
+	public PaqueteDeServicios getPaquete(String id){
+
+		for(PaqueteDeServicios paquete:paquetes){
+			if(paquete.getIdPaquete().equals(id)){
+				return paquete;
+			}
+		}
+		return null;
 	}
 }

@@ -61,28 +61,23 @@ public class Main {
                 System.out.println("Bye!");
                 break;
             case 1:
-
+                crearServicio();
                 break;
             case 2:
-
+                actualizarServicio();
                 break;
 
             case 3:
-
+                inactivarServicio();
                 break;
 
             case 4:
-
+                consultarServicio();
                 break;
 
             case 5:
-
+                actualizarContador();
                 break;
-
-            case 6:
-
-                break;
-
             default:
                 System.out.println("\nEscribe una opcion valida.\n");
                 break;
@@ -127,7 +122,7 @@ public class Main {
          String direccionFacturacion;
          String telefonoContacto;
          String email;
-         int estado;
+         String estado;
 
         System.out.println("Ingrese los datos del cliente:");
         System.out.print("Nombre: ");
@@ -136,14 +131,6 @@ public class Main {
         identificacion = sc.nextLine();
         System.out.print("Fecha de registro (dd/MM/yyyy): ");
         String fecharegistro = sc.nextLine();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha = null;
-        try {
-            fecha = formatoFecha.parse(fechaRegistro);
-        } catch (ParseException e) {
-            System.out.println("Error: Formato de fecha inválido. Por favor, ingrese una fecha válida en formato dd/MM/yyyy.");
-            System.exit(1);
-        }
         System.out.print("Código de Contrato: ");
         codigoContrato = sc.nextLine();
         System.out.print("Dirección de Facturación: ");
@@ -151,43 +138,23 @@ public class Main {
         System.out.print("Teléfono de Contacto: ");
         telefonoContacto = sc.nextLine();
         System.out.print("E-mail: ");
-        email = sc.nextLine();
-        do {
-            System.out.print("Estado:" +
-                    "(1) Potencial " +
-                    "(2) Paz y Salvo " +
-                    "(3) Con Deuda " +
-                    "(4) Moroso" +
-                    "(5) Retirado " +
-                    "(6) Cartera Castigada ");
-            estado = Integer.parseInt(sc.nextLine());
-            if(estado<1 && estado>6){
-                System.out.println("Escriba una opcion valida.");
-            }
-        }while(estado<1 && estado>6);
+        email = sc.nextLine(
+        System.out.print("Estado:");
+        estado = sc.nextLine();
 
+        Controller.getInstance().crearCliente(nombre, identificacion, fechaRegistro, codigoContrato, direccionFacturacion, telefonoContacto, email, estado);
     }
 
-    public void crearServicio(){
+    public void crearServicio() {
 
         // Datos para Agua, Gas o Energía
         String codigoMedidor;
-        int contadorMesActual;
-        int contadorMesAnterior;
+        String contadorMesActual;
+        String contadorMesAnterior;
+        String idPaquete;
 
         // Datos para Telefonía e Internet
-        String codigoContrato;
-        String direccionInstalacion;
-        String fechaInstalacion;
-        String fechaFacturacion;
-        String estado;
-        String tipoContrato;
-        int minutosLocalesIncluidos;
-        int minutosLocalesConsumidos;
-        int minutosLargaDistanciaIncluidos;
-        int minutosLargaDistanciaConsumidos;
-        int consumoIncluidoMegas;
-        int consumoConsumidoMegas;
+        ArrayList<String> otrosParametros = new ArrayList();
 
         System.out.println("Ingrese los datos del servicio:");
 
@@ -197,24 +164,23 @@ public class Main {
         System.out.print("ID del Servicio: ");
         String idServicio = sc.nextLine();
 
-        System.out.println("Ingrese los datos del servicio contratado:");
-        System.out.println("(1) Agua\n" +
-                "(2) Gas\n" +
-                "(3) Energía\n " +
-                "(4) Telefonía\n" +
-                "(5) Internet");
-        int tipoServicio = sc.nextInt();
+        System.out.print("Ingrese el ID del paquete: ");
+        idPaquete = sc.nextLine();
 
+
+        System.out.println("Ingrese los datos del servicio contratado:");
+        System.out.println("Ingrese el tipo de servicio");
+        String tipoServicio = sc.nextLine();
         System.out.print("Ingrese el código de contrato único por cliente: ");
-        codigoContrato = sc.nextLine();
+        String codigoContrato = sc.nextLine();
         System.out.print("Ingrese la dirección de instalación: ");
-        direccionInstalacion = sc.nextLine();
+        String direccionInstalacion = sc.nextLine();
         System.out.print("Ingrese la fecha de instalación: ");
-        fechaInstalacion = sc.nextLine();
+        String fechaInstalacion = sc.nextLine();
         System.out.print("Ingrese la fecha de facturación: ");
-        fechaFacturacion = sc.nextLine();
+        String fechaFacturacion = sc.nextLine();
         System.out.print("Ingrese el estado (activo o inactivo): ");
-        estado = sc.nextLine();
+        String estado = sc.nextLine();
 
         switch (tipoServicio) {
             case 1: // Agua
@@ -223,12 +189,13 @@ public class Main {
                 sc.nextLine();
                 System.out.print("Ingrese el código del medidor: ");
                 codigoMedidor = sc.nextLine();
+                otrosParametros.add(codigoMedidor);
                 System.out.print("Ingrese el valor de contador del mes actual: ");
-                contadorMesActual = sc.nextInt();
+                contadorMesActual = sc.nextLine();
+                otrosParametros.add(contadorMesActual);
                 System.out.print("Ingrese el valor de contador del mes anterior: ");
-                contadorMesAnterior = sc.nextInt();
-
-
+                contadorMesAnterior = sc.nextLine();
+                otrosParametros.add(contadorMesAnterior);
 
                 break;
 
@@ -236,7 +203,8 @@ public class Main {
             case 5: // Internet
                 sc.nextLine();
                 System.out.print("Ingrese el tipo de contrato (plan ilimitado, limitado o prepago): ");
-                tipoContrato = sc.nextLine();
+                String tipoContrato = sc.nextLine();
+                otrosParametros.add(tipoContrato)
 
                 if (tipoServicio == 4) {
                     System.out.print("Ingrese la cantidad de minutos locales incluidos: ");
@@ -254,6 +222,8 @@ public class Main {
                     System.out.print("Ingrese la cantidad de consumo consumido en Megas: ");
                 }
         }
+
+        Controller.getInstance().crearServicio(idCliente, idPaquete, idServicio, tipoServicio, direccionInstalacion, fechaInstalacion, fechaFacturacion, otrosParametros);
 
     }
 

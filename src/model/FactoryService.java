@@ -4,6 +4,14 @@ import java.util.Date;
 
 public class FactoryService {
 
+	private static FactoryService instance;
+
+	public static FactoryService getInstance() {
+		return instance;
+	}
+
+	private FactoryService(){}
+
 	public Servicio crearServicioTelefonico(String contract, int localMin, int largeMin, String id, String dir, Date fechaInstall, Date fechaFact) {
 
 		if(!contract.equals(TipoDeContrato.ILIMITADO + "")){
@@ -17,7 +25,7 @@ public class FactoryService {
 		return new Internet(capacityMe,contract,id,dir,fechaInstall,fechaFact);
 	}
 
-	public Servicio CrearServicioBasico(int type, String idMedidor, String id, String dir, Date fechaInstall, Date fechaFact) throws Exception {
+	public Servicio crearServicioBasico(int type, String idMedidor, String id, String dir, Date fechaInstall, Date fechaFact) throws Exception {
 
 		switch (type){
 			case 1: return new Agua(new Medidor(idMedidor),id,dir,fechaInstall,fechaFact);

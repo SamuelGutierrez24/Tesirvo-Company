@@ -3,7 +3,7 @@ package model;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Controller {
+public class Controller implements Iterable<Cliente>{
 	private static Controller instance = new Controller();
 	private ContenedorClientes contenedorClientes;
 	private ContenedorPlanes contenedorPlanes;
@@ -34,7 +34,7 @@ public class Controller {
 	}
 
 	public void inactivarServicio(String idCliente, String idPaquete, String idServicio) {
-		contenedorClientes.inactivarServicio(idCliente, idPaquete, idServicio)
+		contenedorClientes.inactivarServicio(idCliente, idPaquete, idServicio);
 	}
 
 	public void crearPaquete(String idCliente, String idPaquete){
@@ -52,17 +52,16 @@ public class Controller {
 	 * @param estServicio
 	 * @param idMedidior
 	 */
-	public boolean actualizarServicio(String idCliente, String idServicio, String dirServicio, String estServicio, String idMedidior) {
+	/*public boolean actualizarServicio(String idCliente, String idServicio, String dirServicio, String estServicio, String idMedidior) {
 		contenedorClientes.actualizarServicio();
-	}
+	}*/
 
 	/**
 	 * 
 	 * @param idCliente
 	 */
-	public Servicio[] consultarServicos(String idCliente) {
-		// TODO - implement Controller.consultarServicos
-		throw new UnsupportedOperationException();
+	public ArrayList<Servicio> consultarServicos(String idCliente) {
+		return contenedorClientes.consultarServiciosCliente(idCliente);
 	}
 
 	/**
@@ -83,20 +82,32 @@ public class Controller {
 			}else {
 				return false;
 			}
-
 			return true;
 		}else {
 			return false;
 		}
 	}
 
+	public void crearPlanes(String nombre, double valorAPagar, double valorConsumoAdicional, Date fechaInicial, Date fechaFinal, ArrayList<ServicioDePlan> servicios){
+		contenedorPlanes.crearPlan(nombre, valorAPagar, valorConsumoAdicional,  fechaInicial, fechaFinal, servicios);
+	}
+
 	public static Controller getInstance() {
 		return instance;
 	}
 
-	public Iterator<Cliente> getIterator() {
-		// TODO - implement Controller.getIterator
-		throw new UnsupportedOperationException();
+	public Iterator<Cliente> iterator() {
+		return contenedorClientes.iterator();
 	}
+
+	public ContenedorClientes getContenedorClientes(){
+		return contenedorClientes;
+	}
+
+	public void addService2Pack(String id, Servicio servicio, String idclient)throws Exception{
+		Cliente client = contenedorClientes.buscarCliente(idclient);
+		client.getPaquete(id).anadirServicios(servicio);
+	}
+
 
 }

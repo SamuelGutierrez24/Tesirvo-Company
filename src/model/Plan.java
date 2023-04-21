@@ -57,4 +57,8 @@ public class Plan implements Iterable<ServicioDePlan>{
 	public Iterator<ServicioDePlan> iterator() {
 		return servicios.iterator();
 	}
+	
+	public int numServicios(){
+		return servicios.size();
+	}
 }
