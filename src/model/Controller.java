@@ -53,18 +53,7 @@ public class Controller {
 	 * @param idMedidior
 	 */
 	public boolean actualizarServicio(String idCliente, String idServicio, String dirServicio, String estServicio, String idMedidior) {
-		// TODO - implement Controller.actualizarServicio
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param idCliente
-	 * @param idServicio
-	 */
-	public boolean inactivarServicio(String idCliente, String idServicio) {
-		// TODO - implement Controller.inactivarServicio
-		throw new UnsupportedOperationException();
+		contenedorClientes.actualizarServicio();
 	}
 
 	/**
