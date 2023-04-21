@@ -43,6 +43,18 @@ public abstract class Servicio {
 		this.direccionInstalacion = direccion;
 	}
 
+	public void setFechaInstalacion(Date fechaInstalacion) {
+		this.fechaInstalacion = fechaInstalacion;
+	}
+
+	public void setFechaFacturacion(Date fechaFacturacion) {
+		this.fechaFacturacion = fechaFacturacion;
+	}
+
+	public void setEstado(EstadoServicio estado) {
+		this.estado = estado;
+	}
+
 	public EstadoServicio getEstadoServicio() {
 		return estado;
 	}

@@ -88,8 +88,16 @@ public class Controller implements Iterable<Cliente>{
 		}
 	}
 
-	public void crearPlanes(String nombre, double valorAPagar, double valorConsumoAdicional, Date fechaInicial, Date fechaFinal, ArrayList<ServicioDePlan> servicios){
-		contenedorPlanes.crearPlan(nombre, valorAPagar, valorConsumoAdicional,  fechaInicial, fechaFinal, servicios);
+	public void crearPlanes(String nombre, double valorAPagar, double valorConsumoAdicional, String fechaInicial, String fechaFinal, ArrayList<ServicioDePlan> servicios){
+		// formato dd/MM/yyyy
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			Date date = dateFormat.parse(fechaInicial);
+			Date date2 = dateFormat.parse(fechaFinal);
+			contenedorPlanes.crearPlan(nombre, valorAPagar, valorConsumoAdicional, date, date2, servicios);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static Controller getInstance() {
@@ -107,6 +115,22 @@ public class Controller implements Iterable<Cliente>{
 	public void addService2Pack(String id, Servicio servicio, String idclient)throws Exception{
 		Cliente client = contenedorClientes.buscarCliente(idclient);
 		client.getPaquete(id).anadirServicios(servicio);
+	}
+
+	public void actualizarServicio(String idCliente, String idPaquete, String idServicio,
+								   String direccionInstalacion, String fechaInstalacion,
+								   String fechaFacturacion) {
+		// formato dd/MM/yyyy
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = null, date2 = null;
+		try {
+			date = dateFormat.parse(fechaInstalacion);
+			date2 = dateFormat.parse(fechaFacturacion);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Cliente client = contenedorClientes.buscarCliente(idCliente);
+		client.getPaquete(idPaquete).actualizarServicio(idServicio,direccionInstalacion,date,date2);
 	}
 
 

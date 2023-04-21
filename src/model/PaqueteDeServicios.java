@@ -2,6 +2,7 @@ package model;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PaqueteDeServicios {
 
@@ -33,6 +34,23 @@ public class PaqueteDeServicios {
 			}
 		}
 		return null;
+	}
+
+	public int buscarIndiceServicioEnPaquete(String id){
+		int count = 0;
+		for (Servicio servicio: servicios){
+			if (servicio.getId().equals(id)){
+				return count;
+			}
+			count++;
+		}
+		return count;
+	}
+
+	public void actualizarServicio(String id, String direccionInstalacion, Date fechaInstalacion, Date fechaFacturacion){
+		servicios.get(buscarIndiceServicioEnPaquete(id)).setDireccionInstalacion(direccionInstalacion);
+		servicios.get(buscarIndiceServicioEnPaquete(id)).setFechaInstalacion(fechaInstalacion);
+		servicios.get(buscarIndiceServicioEnPaquete(id)).setFechaFacturacion(fechaFacturacion);
 	}
 
 	public ArrayList<Servicio> getServicios() {

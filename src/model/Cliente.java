@@ -43,7 +43,7 @@ public class Cliente implements Iterable<PaqueteDeServicios>{
 					Servicio s;
 					if (tipoServicio.equals("ServicioTelefonico")) s = factoryService.crearServicioTelefonico(parametrosParticulares.get(0), Integer.parseInt(parametrosParticulares.get(1)), Integer.parseInt(parametrosParticulares.get(2)), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
 					else if(tipoServicio.equals("ServicioInternet")) s = factoryService.crearServicioInternet(Integer.parseInt(parametrosParticulares.get(0)), parametrosParticulares.get(1), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
-					else if (tipoServicio.equals("ServicioBasico")) s = factoryService.CrearServicioBasico(Integer.parseInt(parametrosParticulares.get(0)), parametrosParticulares.get(1), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
+					else if (tipoServicio.equals("ServicioBasico")) s = factoryService.crearServicioBasico(Integer.parseInt(parametrosParticulares.get(0)), parametrosParticulares.get(1), idServicio, direccionInstalacion, dateFechaInstalacion, dateFechaFacturacion);
 					else s = null;
 
 					if(s!= null) {
