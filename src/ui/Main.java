@@ -1,11 +1,9 @@
 package ui;
 
 import model.Controller;
+import model.ServicioDePlan;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -18,7 +16,7 @@ public class Main {
         sc= new Scanner(System.in);
     }
 
-    public static void view(String[] args){
+    public static void main(String[] args){
 
         Main m = new Main();
 
@@ -183,9 +181,9 @@ public class Main {
         String estado = sc.nextLine();
 
         switch (tipoServicio) {
-            case 1: // Agua
-            case 2: // Gas
-            case 3: // Energía
+            case "agua":
+            case "gas":
+            case "energia":
                 sc.nextLine();
                 System.out.print("Ingrese el código del medidor: ");
                 codigoMedidor = sc.nextLine();
@@ -199,68 +197,31 @@ public class Main {
 
                 break;
 
-            case 4: // Telefonía
-            case 5: // Internet
+            case "telefonia":
+            case "internet":
                 sc.nextLine();
                 System.out.print("Ingrese el tipo de contrato (plan ilimitado, limitado o prepago): ");
                 String tipoContrato = sc.nextLine();
                 otrosParametros.add(tipoContrato);
 
-                if (tipoServicio == 4) {
+                if (tipoServicio.equals("telefonia")) {
                     System.out.print("Ingrese la cantidad de minutos locales incluidos: ");
-                    minutosLocalesIncluidos = sc.nextInt();
-                    System.out.print("Ingrese la cantidad de minutos locales consumidos: ");
-                    minutosLocalesConsumidos = sc.nextInt();
+                    String minutosLocalesIncluidos = sc.nextLine();
+                    otrosParametros.add(minutosLocalesIncluidos);
                     System.out.print("Ingrese la cantidad de minutos de larga distancia incluidos: ");
-                    minutosLargaDistanciaIncluidos = sc.nextInt();
-                    System.out.print("Ingrese la cantidad de minutos de larga distancia consumidos: ");
-                    minutosLargaDistanciaConsumidos = sc.nextInt();
+                    String minutosLargaDistanciaIncluidos = sc.nextLine();
+                    otrosParametros.add(minutosLargaDistanciaIncluidos);
+
 
                 } else { // Internet
                     System.out.print("Ingrese la cantidad de consumo incluido en Megas: ");
-                    consumoIncluidoMegas = sc.nextInt();
-                    System.out.print("Ingrese la cantidad de consumo consumido en Megas: ");
+                    String consumoIncluidoMegas = sc.nextLine();
+                    otrosParametros.add(consumoIncluidoMegas);
                 }
         }
 
         Controller.getInstance().crearServicio(idCliente, idPaquete, idServicio, tipoServicio, direccionInstalacion, fechaInstalacion, fechaFacturacion, otrosParametros);
 
-    }
-
-    public void actualizarServicio() {
-
-        String idCliente, idPaquete, idServicio, tipoServicio, direccionInstalacion, fechaInstalacion, fechaFacturacion;
-        ArrayList<String> parametrosParticulares = new ArrayList<>();
-
-        System.out.print("Ingrese el ID del cliente: ");
-        idCliente = sc.nextLine();
-
-        System.out.print("Ingrese el ID del paquete: ");
-        idPaquete = sc.nextLine();
-
-        System.out.print("Ingrese el ID del servicio: ");
-        idServicio = sc.nextLine();
-
-        System.out.print("Ingrese el tipo de servicio: ");
-        tipoServicio = sc.nextLine();
-
-        System.out.print("Ingrese la dirección de instalación: ");
-        direccionInstalacion = sc.nextLine();
-
-        System.out.print("Ingrese la fecha de instalación: ");
-        fechaInstalacion = sc.nextLine();
-
-        System.out.print("Ingrese la fecha de facturación: ");
-        fechaFacturacion = sc.nextLine();
-
-        System.out.println("Ingrese los parametros particulares y termine con un \"listo\"");
-        String temp = "";
-        do{
-            temp = sc.nextLine();
-            if(!temp.equals("listo")) {
-                parametrosParticulares.add(temp);
-            }
-        }while(!temp.equals("listo"));
     }
 
     public void inactivarServicio(){
@@ -276,21 +237,17 @@ public class Main {
         System.out.print("Ingrese el ID del servicio: ");
         idServicio = sc.nextLine();
 
+        Controller.getInstance().inactivarServicio(idCliente,idPaquete,idServicio);
     }
 
     public void consultarServicio(){
 
-        String idCliente, idPaquete, idServicio;
+        String idCliente;
 
         System.out.print("Ingrese el ID del cliente: ");
         idCliente = sc.nextLine();
 
-        System.out.print("Ingrese el ID del paquete: ");
-        idPaquete = sc.nextLine();
-
-        System.out.print("Ingrese el ID del servicio: ");
-        idServicio = sc.nextLine();
-
+        Controller.getInstance().consultarServicos(idCliente);
     }
 
     public void actualizarContador(){
@@ -309,5 +266,70 @@ public class Main {
         // Solicitar al usuario el valor de nuevoValor
         System.out.print("Por favor, ingrese el nuevo valor: ");
         nuevoValor = Double.parseDouble(sc.nextLine());
+
+        Controller.getInstance().actualizarValoresContador(idCliente,idServicio,nuevoValor);
     }
+
+    public void crearPlanes(){
+
+        String nombre, fechaInicial, fechaFinal;
+        double valorAPagar, valorConsumoAdicional;
+        ArrayList<ServicioDePlan> servicios = new ArrayList<>();
+        System.out.println("Ingrese el nombre: ");
+        nombre = sc.nextLine();
+
+        System.out.println("Ingrese el valor a pagar: ");
+        valorAPagar = Double.parseDouble(sc.nextLine());
+
+        System.out.println("Ingrese el valor de consumo adicional: ");
+        valorConsumoAdicional = Double.parseDouble(sc.nextLine());
+
+        System.out.println("Ingrese la fecha inicial (dd/MM/yyyy): ");
+        fechaInicial = sc.nextLine();
+
+        System.out.println("Ingrese la fecha final (dd/MM/yyyy): ");
+        fechaFinal = sc.nextLine();
+
+        System.out.println("Ingrese el id de los servicios del plan y termine con un \"listo\"");
+        String temp = "";
+
+        /*do{
+            temp = sc.nextLine();
+            Controller.getInstance().
+            if(!temp.equals("listo")) {
+                servicios.add(temp);
+            }
+        }while(!temp.equals("listo"));*/
+
+        Controller.getInstance().crearPlanes(nombre, valorAPagar, valorConsumoAdicional, fechaInicial, fechaFinal, servicios);
+    }
+
+    public void actualizarServicio(){
+
+        System.out.print("Ingrese el ID del cliente: ");
+        String idCliente = sc.nextLine();
+
+        System.out.print("Ingrese el ID del paquete: ");
+        String idPaquete = sc.nextLine();
+
+        System.out.print("Ingrese el ID del servicio: ");
+        String idServicio = sc.nextLine();
+
+        System.out.print("Ingrese la dirección de instalación actualizada: ");
+        String direccionInstalacion = sc.nextLine();
+
+        System.out.print("Ingrese la fecha de instalación actualizada: ");
+        String fechaInstalacion = sc.nextLine();
+
+        System.out.print("Ingrese la fecha de facturación actualizada: ");
+        String fechaFacturacion = sc.nextLine();
+
+        Controller.getInstance().actualizarServicio(idCliente, idPaquete, idServicio, direccionInstalacion,
+                fechaInstalacion, fechaFacturacion);
+    }
+
+    /*public void añadirServicioAPack(){
+
+    }*/
+
 }
