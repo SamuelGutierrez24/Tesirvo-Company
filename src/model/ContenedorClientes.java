@@ -26,8 +26,9 @@ public class ContenedorClientes implements Iterable<Cliente> {
 
     public void crearPaquete(String idCliente, String idPaquete){
         for (Cliente cliente: clientes) {
-            if (cliente.equals(idCliente)){
-                cliente.getPaquetes().add(new PaqueteDeServicios(idPaquete));
+            if (cliente.getId().equals(idCliente)){
+                PaqueteDeServicios paquete = new PaqueteDeServicios(idPaquete);
+                cliente.getPaquetes().add(paquete);
             }
         }
     }

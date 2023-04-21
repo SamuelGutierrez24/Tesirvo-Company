@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class FactoryService {
 
-	private static FactoryService instance;
+	private static FactoryService instance = new FactoryService() ;
 
 	public static FactoryService getInstance() {
 		return instance;

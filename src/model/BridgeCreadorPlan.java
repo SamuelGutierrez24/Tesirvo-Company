@@ -25,21 +25,21 @@ public class BridgeCreadorPlan {
 			switch (s.getTipo()){
 				case AGUA ->{
 					try {
-						servicios[num] = FactoryService.getInstance().crearServicioBasico(1, null, null, null, null, null)
+						servicios[num] = FactoryService.getInstance().crearServicioBasico(1, null, null, null, null, null);
 						servicios[num].setEstadoServicio("INACTIVO");
 					}
 					catch (Exception e) {}
 				}
 				case GAS -> {
 					try {
-						servicios[num] = FactoryService.getInstance().crearServicioBasico(3, null, null, null, null, null)
+						servicios[num] = FactoryService.getInstance().crearServicioBasico(3, null, null, null, null, null);
 						servicios[num].setEstadoServicio("INACTIVO");
 					}
 					catch (Exception e) {}
 				}
 				case ENERGIA ->{
 					try {
-						servicios[num] = FactoryService.getInstance().crearServicioBasico(2, null, null, null, null, null)
+						servicios[num] = FactoryService.getInstance().crearServicioBasico(2, null, null, null, null, null);
 						servicios[num].setEstadoServicio("INACTIVO");
 					}
 					catch (Exception e) {}

@@ -138,7 +138,7 @@ public class Main {
         System.out.print("Teléfono de Contacto: ");
         telefonoContacto = sc.nextLine();
         System.out.print("E-mail: ");
-        email = sc.nextLine(
+        email = sc.nextLine();
         System.out.print("Estado:");
         estado = sc.nextLine();
 
@@ -204,7 +204,7 @@ public class Main {
                 sc.nextLine();
                 System.out.print("Ingrese el tipo de contrato (plan ilimitado, limitado o prepago): ");
                 String tipoContrato = sc.nextLine();
-                otrosParametros.add(tipoContrato)
+                otrosParametros.add(tipoContrato);
 
                 if (tipoServicio == 4) {
                     System.out.print("Ingrese la cantidad de minutos locales incluidos: ");

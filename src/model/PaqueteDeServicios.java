@@ -7,7 +7,7 @@ public class PaqueteDeServicios {
 
 	private ArrayList<Servicio> servicios;
 	private Plan plan;
-
+	 private String idPaquete;
 	public PaqueteDeServicios(String idPaquete) {
 		this.idPaquete = idPaquete;
 		servicios = new ArrayList<>();
@@ -44,7 +44,7 @@ public class PaqueteDeServicios {
 		else throw new Exception("this package has a plan");
 	}
 
-	private String idPaquete;
+
 
 	public String getIdPaquete() {
 		return this.idPaquete;
@@ -64,6 +64,14 @@ public class PaqueteDeServicios {
 		for (Servicio s : serv){
 			servicios.add(s);
 		}
+	}
+
+	public String toString(){
+		return "Codigo del paquete:" + getIdPaquete();
+	}
+
+	public String getId(){
+		return idPaquete;
 	}
 
 }

@@ -7,9 +7,12 @@ public class Controller implements Iterable<Cliente>{
 	private static Controller instance = new Controller();
 	private ContenedorClientes contenedorClientes;
 	private ContenedorPlanes contenedorPlanes;
+
+
 	private Controller() {
 		contenedorClientes = new ContenedorClientes();
 		contenedorPlanes = new ContenedorPlanes();
+
 	}
 	/**
 	 * 

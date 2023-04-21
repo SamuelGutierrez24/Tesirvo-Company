@@ -13,7 +13,7 @@ import java.util.Date;
 public class TestService extends TestCase {
 
     private Controller control = Controller.getInstance();
-    private FactoryService factory;
+    private FactoryService factory = FactoryService.getInstance();
 
     public void setUp(){
         control = Controller.getInstance();
@@ -71,7 +71,7 @@ public class TestService extends TestCase {
         Date fecha = formatoFecha.parse("18/03/2017");
 
         // Create a Client
-        control.crearCliente("Samuel", "A00381035","24/junio/2020", "A2345","Calle 13 b #64-65","3166983864","sam16ln@gmail.com","PAZ_Y_SALVO");
+        control.crearCliente("Samuel", "A00381035","24/06/2020", "A2345","Calle 13 b #64-65","3166983864","sam16ln@gmail.com","PAZ_Y_SALVO");
         Cliente samuel = control.getContenedorClientes().buscarCliente("A00381035");
 
         assertEquals(control.getContenedorClientes().buscarCliente("A00381035"),samuel);
@@ -82,11 +82,16 @@ public class TestService extends TestCase {
         Servicio basico = factory.crearServicioBasico(1,"AC003829","Agua2386","Calle 13b #64-65 casa 19 ",fecha ,fecha);
 
         control.crearPaquete("A00381035", "pack1");
+
         control.addService2Pack("pack1",internet,"A00381035");
         control.addService2Pack("pack1",telefonia,"A00381035");
         control.addService2Pack("pack1",basico,"A00381035");
 
-        assertEquals(control.);
+        assertEquals(control.getContenedorClientes().buscarCliente("A00381035").getPaquete("pack1").toString(),"Codigo del paquete:pack1");
+
+        assertEquals(internet,samuel.searchService("Inter-25188"));
+
+        assertEquals(samuel.getPaquete("pack1").buscarServicioEnPaquete("Tel-0223"),telefonia);
 
 
 
