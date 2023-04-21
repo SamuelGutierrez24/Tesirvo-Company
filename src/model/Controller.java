@@ -83,8 +83,22 @@ public class Controller {
 	 * @param nuevoValor
 	 */
 	public boolean actualizarValoresContador(String idCliente, String idServicio, double nuevoValor) {
-		// TODO - implement Controller.actualizarValoresContador
-		throw new UnsupportedOperationException();
+		Cliente client = contenedorClientes.buscarCliente(idCliente);
+		if(client != null){
+
+			Servicio service = client.searchService(idServicio);
+			if (service != null && service instanceof ServicioBasico){
+				double mesPasado = ((ServicioBasico) service).getMedidor().getMesActual();
+				((ServicioBasico) service).getMedidor().setMesActual(nuevoValor);
+				((ServicioBasico) service).getMedidor().setMesAnterior(mesPasado);
+			}else {
+				return false;
+			}
+
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	public static Controller getInstance() {

@@ -2,8 +2,11 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class ContenedorClientes {
+public class ContenedorClientes implements Iterable<Cliente> {
 
     public ContenedorClientes() {
         this.clientes = new ArrayList<>();
@@ -46,7 +49,12 @@ public class ContenedorClientes {
             if (cliente.getId().equals(idCliente)){
                 return cliente;
             }
-            return null;
         }
+        return null;
+    }
+
+    @Override
+    public Iterator<Cliente> iterator() {
+        return null;
     }
 }
